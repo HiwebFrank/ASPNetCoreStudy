@@ -15,3 +15,4 @@ C:\TensunCloudPrj\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.As
 C:\TensunCloudPrj\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.dll
 C:\TensunCloudPrj\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.pdb
 C:\TensunCloudPrj\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.csprojResolveAssemblyReference.cache
+D:\HiBiz\FrankFeng\Documents\Visual Studio 2017\Projects\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.csprojResolveAssemblyReference.cache

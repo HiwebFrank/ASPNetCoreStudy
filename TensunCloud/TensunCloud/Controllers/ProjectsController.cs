@@ -14,14 +14,14 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace TensunCloud.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ProjectsController : Controller
     {
         private readonly TensunContext _context;
 
         public ProjectsController(TensunContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Projects
@@ -39,12 +39,12 @@ namespace TensunCloud.Controllers
             }
 
             var project = await _context.Projects
-                .Include(p=>p.ProjectProducts)
-                    .ThenInclude(pp=>pp.Product)
-                .Include(p=>p.ProjectTeamMembers)
-                    .ThenInclude(pt=>pt.Employee)
+                .Include(p => p.ProjectProducts)
+                    .ThenInclude(pp => pp.Product)
+                .Include(p => p.ProjectTeamMembers)
+                    .ThenInclude(pt => pt.Employee)
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
+                .SingleOrDefaultAsync(p => p.ID == id);
             if (project == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace TensunCloud.Controllers
             return View(project);
         }
 
-        
+
         // GET: Projects/Create
         public IActionResult Create()
         {
@@ -74,7 +74,7 @@ namespace TensunCloud.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            EnumDropDownList(null,project.Region,project.Province,null,project.ProjectType,project.Status,null,null,null,null);
+            EnumDropDownList(null, project.Region, project.Province, null, project.ProjectType, project.Status, null, null, null, null);
             return View(project);
         }
 
@@ -116,8 +116,8 @@ namespace TensunCloud.Controllers
             {
                 try
                 {
-                    _context.Update(project);       
-                    
+                    _context.Update(project);
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -143,7 +143,7 @@ namespace TensunCloud.Controllers
             {
                 return NotFound();
             }
-            
+
             var project = await _context.Projects
                 .Include(p => p.ProjectProducts)
                     .ThenInclude(pp => pp.Product)
@@ -156,7 +156,7 @@ namespace TensunCloud.Controllers
             }
             ProductDropDownList();
             return View(project);
-            
+
         }
 
 
@@ -174,7 +174,7 @@ namespace TensunCloud.Controllers
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.ID == id);
 
-            
+
 
             if (await TryUpdateModelAsync<ProjectProduct>(
                 projectproducts, "", pp => pp.ProjectID, pp => pp.ProductID, pp => pp.Qty)
@@ -204,12 +204,12 @@ namespace TensunCloud.Controllers
             return View(projectproduct);
         }
 
-        private void EnumDropDownList(object seletedTSDept=null, object seletedTSRegion = null, object seletedProvince = null, 
+        private void EnumDropDownList(object seletedTSDept = null, object seletedTSRegion = null, object seletedProvince = null,
             object seletedTSTitle = null, object seletedProjectType = null, object seletedProjectStatus = null, object seletedProductCatalog = null,
             object seletedTeamMemberType = null, object seletedPartyRelationType = null, object seletedPartyType = null)
         {
 
-            ViewBag.TSDept = new SelectList(System.Enum.GetValues(typeof(TSDept)),seletedTSDept);
+            ViewBag.TSDept = new SelectList(System.Enum.GetValues(typeof(TSDept)), seletedTSDept);
             ViewBag.TSRegion = new SelectList(System.Enum.GetValues(typeof(TSRegion)), seletedTSRegion);
             ViewBag.Province = new SelectList(System.Enum.GetValues(typeof(Province)), seletedProvince);
             ViewBag.TSTitle = new SelectList(System.Enum.GetValues(typeof(TSTitle)), seletedTSTitle);
@@ -222,13 +222,13 @@ namespace TensunCloud.Controllers
 
         }
 
-        private void ProductDropDownList(object seletedProduct=null)
+        private void ProductDropDownList(object seletedProduct = null)
         {
-            
+
             var productsQuery = from p in _context.Products
                                 orderby p.ProductName
                                 select p;
-            ViewBag.DropDownProducts = new SelectList(productsQuery.AsNoTracking(),"ID", "ProductName", seletedProduct);
+            ViewBag.DropDownProducts = new SelectList(productsQuery.AsNoTracking(), "ID", "ProductName", seletedProduct);
             ViewBag.DropDownProductsModel = new SelectList(productsQuery.AsNoTracking(), "ID", "ProductModel", seletedProduct);
         }
 
@@ -269,7 +269,7 @@ namespace TensunCloud.Controllers
 
         public async Task<IActionResult> DeleteProjectProduct(int id)
         {
-            
+
             var projectproduct = await _context.ProjectProducts.SingleOrDefaultAsync(pp => pp.ID == id);
             int projectID = projectproduct.ProjectID;  //获取返回位置
             _context.ProjectProducts.Remove(projectproduct);
@@ -278,23 +278,24 @@ namespace TensunCloud.Controllers
         }
         public async Task<IActionResult> AddProjectProduct(int id)
         {
+
+            var PrdQty = Request.Form["prdqty"];
+            var PrdID = Request.Form["prdid"];
+            if (!(String.IsNullOrEmpty(PrdQty) || String.IsNullOrEmpty(PrdID)))
+            {
+                // todo： 判断产品是否有重复
+
+
+                ProjectProduct projectproduct = new ProjectProduct();
+                projectproduct.ProjectID = id;
+                projectproduct.Qty = int.Parse(PrdQty);
+                projectproduct.ProductID = int.Parse(PrdID);
+
+
+                _context.ProjectProducts.Add(projectproduct);
+                await _context.SaveChangesAsync();
+            }
             
-            //var project = await _context.Projects
-            //  .Include(p => p.ProjectProducts)
-            //  .AsNoTracking()
-            //  .SingleOrDefaultAsync(m => m.ID == id);
-
-            ProjectProduct projectproduct=new ProjectProduct();
-            projectproduct.ProjectID = id;
-            projectproduct.Qty = int.Parse(Request.Form["prdqty"].ToString());
-            projectproduct.ProductID =int.Parse(Request.Form["prdid"].ToString());
-
-
-            _context.ProjectProducts.Add(projectproduct);
-            await _context.SaveChangesAsync();
-
-
-
             return RedirectToAction("EditProjectProducts", new { @id = id });
         }
     }
