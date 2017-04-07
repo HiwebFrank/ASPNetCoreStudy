@@ -1,0 +1,1 @@
+the Asp.Net Core test projects for Learning and Study myself.
