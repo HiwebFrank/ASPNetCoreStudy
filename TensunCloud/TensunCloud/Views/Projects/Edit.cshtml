@@ -1,0 +1,87 @@
+﻿@model TensunCloud.Models.Project
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Project</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="ID" />
+        <div class="form-group">
+            <label asp-for="ProjectName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ProjectName" class="form-control" />
+                <span asp-validation-for="ProjectName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProjectType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ProjectType" class="form-control" asp-items="ViewBag.ProjectType">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="ProjectType" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Province" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Province" class="form-control" asp-items="ViewBag.Province">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="Province" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Region" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Region" class="form-control" asp-items="ViewBag.TSRegion">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DeliveryDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DeliveryDate" class="form-control" />
+                <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Status" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Status" class="form-control" asp-items="ViewBag.ProjectStatus">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,36 @@
+@model TensunCloud.Models.Contract
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contract</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContractName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SignDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SignDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

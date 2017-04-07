@@ -1,0 +1,138 @@
+@model TensunCloud.Models.Project
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>项目详细信息</h2>
+
+<div>
+    <h4>基本信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProjectType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Province)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Province)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt><br /></dt>
+        <dd></dd>
+        <dt></dt>
+        <dd>
+            <a asp-action="Edit" asp-route-id="@Model.ID">编辑</a> |
+            <a asp-action="Index">返回</a>
+        </dd>
+    </dl>
+    <div>
+        <br />
+    </div>
+    <hr />
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#Products">项目产品</a></li>
+                <li><a data-toggle="tab" href="#TeamMember">项目成员</a></li>
+                <li><a data-toggle="tab" href="#Party">项目相关方</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="Products" class="tab-pane fade in active">
+                    <dl class="dl-horizontal">
+                        <dd>
+                            <table class="table" >
+                                <tr>
+                                    <th>产品名称</th>
+                                    <th>产品型号</th>
+                                    <th>数量</th>
+                                </tr>
+                                @foreach (var item in Model.ProjectProducts)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Product.ProductModel)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Qty)
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </dd>
+                        <dt><br /></dt>
+                        <dd></dd>
+                        <dt></dt>
+                        <dd>
+                            <a asp-action="EditProjectProducts" asp-route-id="@Model.ID">编辑 ...</a> 
+                        </dd>
+                    </dl>
+                </div>
+                <div id="TeamMember" class="tab-pane fade">
+                    <dl class="dl-horizontal">
+
+                        <dd>
+                            <table class="table">
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>项目角色</th>
+                                </tr>
+                                @foreach (var item in Model.ProjectTeamMembers)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Employee.EmpName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TeamMemberType)
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="Party" class="tab-pane fade">
+
+                </div>
+            </div>
+
+</div>
+

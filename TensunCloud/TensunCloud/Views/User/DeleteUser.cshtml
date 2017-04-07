@@ -1,0 +1,26 @@
+﻿@model string
+@using TensunCloud.Models;
+
+@{
+    ViewData["Title"] = "确认？";
+}
+<form asp-action="DeleteUser">
+   
+    <br/><br /><br /><br />
+    <div class="col-md-offset-4 col-md-8">
+        确认删除 @Model 账户？
+    </div>
+    <br />
+    <br />
+    
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+            <input type="submit" value="删除" class="btn btn-danger" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a asp-action="Index">取消</a>
+        </div>
+    </div>
+    <br /><br /><br /><br />
+</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,17 @@
+D:\HiBiz\FrankFeng\Documents\Visual Studio 2017\Projects\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.deps.json
+D:\HiBiz\FrankFeng\Documents\Visual Studio 2017\Projects\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.runtimeconfig.json
+D:\HiBiz\FrankFeng\Documents\Visual Studio 2017\Projects\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.runtimeconfig.dev.json
+D:\HiBiz\FrankFeng\Documents\Visual Studio 2017\Projects\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.dll
+D:\HiBiz\FrankFeng\Documents\Visual Studio 2017\Projects\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.pdb
+D:\HiBiz\FrankFeng\Documents\Visual Studio 2017\Projects\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.AssemblyInfo.cs
+D:\HiBiz\FrankFeng\Documents\Visual Studio 2017\Projects\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.dll
+D:\HiBiz\FrankFeng\Documents\Visual Studio 2017\Projects\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.pdb
+C:\TensunCloudPrj\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.deps.json
+C:\TensunCloudPrj\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.runtimeconfig.json
+C:\TensunCloudPrj\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.runtimeconfig.dev.json
+C:\TensunCloudPrj\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.dll
+C:\TensunCloudPrj\TensunCloud\TensunCloud\bin\Debug\netcoreapp1.1\TensunCloud.pdb
+C:\TensunCloudPrj\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.AssemblyInfo.cs
+C:\TensunCloudPrj\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.dll
+C:\TensunCloudPrj\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.pdb
+C:\TensunCloudPrj\TensunCloud\TensunCloud\obj\Debug\netcoreapp1.1\TensunCloud.csprojResolveAssemblyReference.cache

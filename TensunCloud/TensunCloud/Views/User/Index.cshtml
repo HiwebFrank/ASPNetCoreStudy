@@ -1,0 +1,48 @@
+﻿@model IEnumerable<UserListViewModel>
+@using TensunCloud.Models;
+@using TensunCloud.Data;
+
+@{
+    ViewData["Title"] = "用户账户";
+}
+
+<h2>用户账户</h2>
+
+<p>
+    <a asp-action="AddUser">新建用户</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                用户
+            </th>
+            <th>
+                邮箱
+            </th>
+            <th>
+                操作
+            </th>
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                
+                <td>
+                    <a asp-action="EditUser" asp-route-id="@item.Id">修改</a> |
+                    <a asp-action="DeleteUser" asp-route-id="@item.Id">删除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
